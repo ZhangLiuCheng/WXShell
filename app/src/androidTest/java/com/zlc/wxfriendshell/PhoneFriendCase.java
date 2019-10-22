@@ -84,7 +84,6 @@ public class PhoneFriendCase {
     }
 
     private boolean toBack() {
-
         System.out.println("-------->  返回");
         mDevice.wait(Until.findObject(By.desc("返回")), 6000);
         UiObject2 backObj = mDevice.findObject(By.desc("返回"));
@@ -98,33 +97,6 @@ public class PhoneFriendCase {
         System.out.println("-------->  返回 成功");
         backObj.clickAndWait(Until.newWindow(), 5000);
         return true;
-
-
-
-        /*
-        System.out.println("-------->  返回");
-        UiObject backObj = new UiObject(new UiSelector().description("返回"));
-//        UiObject backObj = new UiObject(new UiSelector().resourceId("com.tencent.mm:id/m4"));
-
-        if(!backObj.exists()) {
-            System.out.println("-------->  返回 失败");
-            return false;
-        }
-        try {
-            backObj.clickAndWaitForNewWindow();
-        } catch (UiObjectNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-        System.out.println("-------->  返回 成功");
-        return true;
-         */
-
-
-//        boolean flag = mDevice.pressBack();
-//        System.out.println("-------->  返回 " + flag);
-
-//        return true;
     }
 
     private boolean addFriend(String phone) {
