@@ -22,7 +22,7 @@ public class PhoneFriendCase {
     private int successNumber;
     private boolean running;
 
-    private final String message = "老同学你好，还记得我吗？";
+    private final String message = "老朋友你好，还记得我吗？";
 
     @Before
     public void setUp() {
@@ -75,7 +75,7 @@ public class PhoneFriendCase {
     }
 
     private String getRandomPhone() {
-        String number = "139";
+        String number = "138";
         Random random = new Random();
         for (int j = 0; j < 8; j++) {
             number += random.nextInt(9);
@@ -113,7 +113,11 @@ public class PhoneFriendCase {
             System.out.println("-------->  输入号码");
             accountTextObj.setText(phone);
         }
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 点击搜索
         mDevice.wait(Until.findObject(By.res("com.tencent.mm:id/s3")), 15000);
         UiObject2 serachObj = mDevice.findObject(By.res("com.tencent.mm:id/s3"));
@@ -125,6 +129,7 @@ public class PhoneFriendCase {
         // 点击添加到通讯录
         UiObject2 makeFriendObj = mDevice.findObject(By.text("添加到通讯录"));
         if (makeFriendObj == null) {
+            System.out.println("-------->  用户不存在或操作搜索超过数量");
             toBack();
             return false;
         }
@@ -137,6 +142,12 @@ public class PhoneFriendCase {
             System.out.println("-------->  点击发送按钮");
             sendObj.clickAndWait(Until.newWindow(), 50000);
         }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("-------->  睡眠");
         toBack();
         return true;
     }
